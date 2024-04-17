@@ -12,6 +12,18 @@ const Color kOtherColor = Color(0xFFF4F6F7);
 const Color kTextLightColor = Color(0xFFA5A5A5);
 const Color kErrorBorderColor = Color(0xFFE74C3C);
 
+const kSecColor = Color(0xFF8B94BC);
+const kGreenColor = Color(0xFF6AC259);
+const kRedColor = Color(0xFFE92E30);
+const kGrayColor = Color(0xFFC1C1C1);
+const kBlackColor = Color(0xFF101010);
+const kPrimaryGradient = LinearGradient(
+  colors: [Color(0xFF46A0AE), Color(0xFF00FFCB)],
+  begin: Alignment.centerLeft,
+  end: Alignment.centerRight,
+);
+
+
 //default value
 const kDefaultPadding = 20.0;
 

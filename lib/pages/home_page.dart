@@ -1,17 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:login_page/components/constants.dart';
+import 'package:login_page/pages/assignment_screen.dart';
+import 'package:login_page/pages/datesheet_screen.dart';
 import 'package:login_page/pages/fee_screen.dart';
 import '../components/drawer.dart';
 import '../components/student_data.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
   static String routeName = 'HomeScreen';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey,
+      appBar: AppBar(
+        iconTheme:  IconThemeData(color: kPrimaryColor),
+        title: Center(
+          child: Text(
+            'Welcome to your account ! ',
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+      ),
+    drawer:MyDrawer(onProfileTap: () {  }, onSignOut: () {  },),
       body: Column(
         children: [
           // we will devide the screen into two parts
@@ -23,7 +36,7 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Column(
+                const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     StudentName(
@@ -49,7 +62,7 @@ class HomeScreen extends StatelessWidget {
                         width: MediaQuery.of(context).size.width / 2.5,
                         height: MediaQuery.of(context).size.height / 9,
                         decoration: BoxDecoration(
-                          color: Color(0xFFF4F6F7),
+                          color: const Color(0xFFF4F6F7),
                           borderRadius: BorderRadius.circular(20.0),
                         ),
                         child: Column(
@@ -80,14 +93,17 @@ class HomeScreen extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.pushNamed(context, FeeScreen.routeName);
-
+                        // Navigator.pushNamed(context, FeeScreen.routeName);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const FeeScreen()),
+                        );
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width / 2.5,
                         height: MediaQuery.of(context).size.height / 9,
                         decoration: BoxDecoration(
-                          color: Color(0xFFF4F6F7),
+                          color: const Color(0xFFF4F6F7),
                           borderRadius: BorderRadius.circular(20.0),
                         ),
                         child: Column(
@@ -126,7 +142,7 @@ class HomeScreen extends StatelessWidget {
               color: Colors.transparent,
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color(0xFFF4F6F7),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20.0 * 3),
@@ -134,7 +150,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 child: ListView(
-                  physics: BouncingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -144,7 +160,13 @@ class HomeScreen extends StatelessWidget {
                             icon: 'assets/icons/quiz.svg',
                             title: 'Take Quiz'),
                         HomeCard(
-                            onPress: () {},
+                            onPress: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (
+                                    context) => const AssignmentScreen()),
+                              );
+                            },
                             icon: 'assets/icons/assignment.svg',
                             title: 'Assignments'),
                       ],
@@ -170,9 +192,16 @@ class HomeScreen extends StatelessWidget {
                             icon: 'assets/icons/result.svg',
                             title: 'Result'),
                         HomeCard(
-                            onPress: () {},
+                            onPress:() {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (
+                                    context) => const DateSheetScreen()),
+                              );
+                            },
                             icon: 'assets/icons/datesheet.svg',
                             title: 'Datesheet'),
+
                       ],
                     ),
                     Row(
@@ -241,7 +270,7 @@ class HomeCard extends StatelessWidget {
     return InkWell(
       onTap: onPress,
       child: Container(
-        margin: EdgeInsets.only(top: kDefaultPadding / 2),
+        margin: const EdgeInsets.only(top: kDefaultPadding / 2),
         width: MediaQuery.of(context).size.width / 2.5,
         height: MediaQuery.of(context).size.height / 6,
         decoration: BoxDecoration(
@@ -263,7 +292,7 @@ class HomeCard extends StatelessWidget {
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.subtitle2,
             ),
-            SizedBox(height: kDefaultPadding / 3),
+            const SizedBox(height: kDefaultPadding / 3),
           ],
         ),
       ),

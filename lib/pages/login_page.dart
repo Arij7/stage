@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:login_page/components/button.dart';
 import 'package:login_page/components/textfield.dart';
+import 'package:login_page/pages/home_page.dart';
 import 'package:login_page/pages/registre_page.dart';
 import 'package:login_page/pages/testapi.dart';
 import '../loginResponse.dart';
@@ -78,6 +79,10 @@ class _LoginPageState extends State<LoginPage> {
                         // Navigator.push(
                         // context,
                         // MaterialPageRoute(builder: (context) =>
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomeScreen()),
+                        );
                       }
                     },
                     text: 'Login',
